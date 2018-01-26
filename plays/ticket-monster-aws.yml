@@ -199,7 +199,8 @@
         password: test
 
   roles:
-    - { role: sfromm.postgresql }
+  #  - { role: sfromm.postgresql }
+    - ansible-postgresql
 
   post_tasks:
     - name: Configure TCP/IP Client Authorizations
