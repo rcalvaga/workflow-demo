@@ -7,7 +7,7 @@
   vars:
     region:   us-east-1
     #ami:      ami-81cf0c97
-    ami:      ami-eea2ab95
+    ami:      ami-ae7bfdb8
     keypair:  "{{ ec2_keypair_name | default('id_rsa_os1_rcalvaga') }}"
     set_dns:  False
     count:    2
@@ -184,8 +184,10 @@
 
 - hosts: db_provisioned
   name: Deploy PostgreSQL
-  user: ec2-user
-  become: true
+  #user: ec2-user
+  #become: true
+  become: yes
+  become_method: sudo
   gather_facts: true
 
   vars:
@@ -215,8 +217,10 @@
 
 - hosts: app_provisioned
   name: Deploy Ticket Monster
-  user: ec2-user
-  become: true
+  #user: ec2-user
+  #become: true
+  become: yes
+  become_method: sudo
   gather_facts: true
 
   vars:
