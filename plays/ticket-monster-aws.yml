@@ -18,7 +18,8 @@
       env:  "{{ tags_env  | default('prod') }}"
       type: "{{ tags_type | default('app') }}"
     wait_for_ssh: False
-    provider_id: "{{ provider_id }}"
+    #provider_id: "{{ provider_id }}"
+    provider_id: 2
     max_retries: 9 
     retry_interval: 20
     miq_username: "{{ miq_username }}"
@@ -200,7 +201,7 @@
         password: test
 
   roles:
-  #  - { role: sfromm.postgresql }
+    #- { role: sfromm.postgresql }
     - ansible-postgresql
 
   post_tasks:
