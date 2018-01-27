@@ -20,8 +20,8 @@
     wait_for_ssh: False
     #provider_id: "{{ provider_id }}"
     provider_id: 2
-    max_retries: 9 
-    retry_interval: 20
+    max_retries: 10 
+    retry_interval: 30
     #miq_username: "{{ miq_username }}"
     #miq_password: "{{ miq_password }}"
 
@@ -156,7 +156,9 @@
       set_fact:
         vms: "{{ vms }} + [ { 'href': svc_url, 'resource': { 'href': '/api/vms/{{ item.json.resources[0].id }}' } } ]"
       with_items: "{{ output.results }}"
-
+      retries: "{{max_retries}}"
+      delay: "{{retry_interval}}"
+      
     - debug: var=vms
 
     - name: Register vms with the service
