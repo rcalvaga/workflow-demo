@@ -26,6 +26,10 @@
     #miq_password: "{{ miq_password }}"
 
   tasks:
+    - debug: var=manageiq.api_url
+    - debug: var=manageiq.api_token
+    - debug: var=manageiq.service
+    
     - name: Launch DB instance
       local_action:
         module: ec2
